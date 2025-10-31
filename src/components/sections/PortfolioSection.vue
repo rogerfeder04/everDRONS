@@ -9,6 +9,17 @@ const currentSlides = ref({});
 
 // Datos actualizados con múltiples imágenes por categoría
 const portfolioItems = ref([
+    {
+    id: 7,
+    title: 'Emergencias y Monitoreo',
+    category: 'inspeccion',
+    images: [
+      '/assets/catastrofe.jpg',
+      '/assets/llu.jpg',
+      '/assets/cata.jpg'
+    ],
+    description: 'monitoreo con cámaras especiales pueden usarse para buscar personas o para evaluar los daños tras un desastre natural.'
+  },
   {
     id: 1,
     title: 'Mapeo Aéreo de Terrenos',
@@ -33,14 +44,14 @@ const portfolioItems = ref([
   },
   {
     id: 3,
-    title: 'Inspección con Drones',
+    title: 'Inspección y seguimiento con Drones',
     category: 'inspeccion',
     images: [
       '/assets/inspeccion.jpg',
       '/assets/cabañas.jpg',
       '/assets/dron2.jpg'
     ],
-    description: 'Inspección técnica de infraestructura industrial con sensores térmicos'
+    description: 'Inspección técnica aérea de infraestructura industrial y zonas rurales mediante drones equipados con sensores y cámaras de alta resolución. Ideal para detectar fallas estructurales, puntos de calor, o fugas energéticas. Además, permite realizar búsquedas eficientes de personas o animales en terrenos amplios o de difícil acceso, precisa y en tiempo real.'
   },
   {
     id: 4,
@@ -60,7 +71,7 @@ const portfolioItems = ref([
     images: [
       '/assets/lote.jpg',
       '/assets/casa.jpg',
-      '/assets/nevado.jpg'
+      '/assets/campo.jpg'
     ],
     description: 'Análisis topográfico y monitoreo de cultivos con drones especializados'
   },
@@ -75,17 +86,7 @@ const portfolioItems = ref([
     ],
     description: 'Momentos únicos capturados desde las alturas en celebraciones especiales'
   },
-  {
-    id: 7,
-    title: 'Construcción y Seguimiento',
-    category: 'inspeccion',
-    images: [
-      '/assets/cabañas.jpg',
-      '/assets/inspeccion.jpg',
-      '/assets/campo.jpg'
-    ],
-    description: 'Monitoreo de avance de construcción con vuelos programados'
-  },
+
   {
     id: 8,
     title: 'Paisajes Naturales',

@@ -5,7 +5,8 @@
     
     <!-- Services Section Component -->
     <ServicesSection />
-    
+
+
     <!-- Portfolio Section Component -->
     <PortfolioSection />
     
@@ -99,7 +100,8 @@
             </div>
           </div>
         </div>
-        
+                 <!-- Drone Banner Component --> 
+    <DroneBanner /> <!-- 👈 Agregar aquí -->
         <!-- Información de contacto -->
       <div class="row mt-5" data-aos="fade-up" data-aos-delay="400">
           <div class="col-lg-4 mb-4">
@@ -132,6 +134,7 @@
         </div>
       </div>
     </section>
+
   </div>
 </template>
 
@@ -140,7 +143,7 @@ import { ref, onMounted } from 'vue';
 import HeroBanner from './sections/HeroBanner.vue';
 import ServicesSection from './sections/ServicesSection.vue';
 import PortfolioSection from './sections/PortfolioSection.vue';
-
+import DroneBanner from './sections/Banner.vue'; // 👈 Nuevo componente
 // Formulario de contacto
 const contactForm = ref({
   nombre: '',
@@ -732,7 +735,10 @@ onMounted(() => {
 @media (max-width: 576px) {
   .stats-section,
   .contact-section { padding: 25px 0 !important; }
-  
+  .row, .column, .flex {
+    display: flex !important;
+    flex-wrap: nowrap;
+}
   .section-title {
     font-size: clamp(1.5rem, 6vw, 1.9rem) !important;
     margin-bottom: 15px;
@@ -750,12 +756,19 @@ onMounted(() => {
     border-radius: 12px;
   }
   
-  .stat-item {
+  /* .stat-item {
     padding: 15px 10px;
     margin: 0 8px 10px;
     border-radius: 12px;
-  }
+  } */
   
+    .stat-item[data-v-08e32229] {
+        padding: 0px 0px;
+        margin-bottom: 12px;
+        height: 140px;
+        border-radius: 15px;
+    }
+
   .stat-number {
     font-size: clamp(1.5rem, 8vw, 2rem) !important;
     margin-bottom: 6px;
@@ -764,12 +777,12 @@ onMounted(() => {
   .stat-item p {
     font-size: clamp(0.75rem, 3vw, 0.9rem) !important;
   }
-  
-  .contact-info-card {
-    padding: 15px 12px;
-    margin: 0 8px 12px;
-    border-radius: 12px;
-  }
+
+ .contact-info-card[data-v-08e32229] {
+        padding: 12px 10px;
+        margin: 0 2px 2px;
+        border-radius: 12px;
+    }
   
   .contact-icon {
     width: 40px;
@@ -796,72 +809,7 @@ onMounted(() => {
   .container { padding: 0 12px; }
 }
 
-@media (max-width: 400px) {
-  .stats-section,
-  .contact-section { padding: 20px 0 !important; }
-  
-  .section-title {
-    font-size: clamp(1.3rem, 7vw, 1.7rem) !important;
-    margin-bottom: 12px;
-  }
-  
-  .lead {
-    font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important;
-    margin-bottom: 20px;
-    padding: 0 8px;
-  }
-  
-  .contact-form-wrapper {
-    padding: 12px 10px;
-    margin: 0 6px 20px;
-    border-radius: 10px;
-  }
-  
-  .stat-item {
-    padding: 12px 8px;
-    margin: 0 6px 8px;
-    border-radius: 10px;
-  }
-  
-  .stat-number {
-    font-size: clamp(1.3rem, 10vw, 1.8rem) !important;
-    margin-bottom: 5px;
-  }
-  
-  .stat-item p {
-    font-size: clamp(0.7rem, 3.5vw, 0.8rem) !important;
-  }
-  
-  .contact-info-card {
-    padding: 12px 10px;
-    margin: 0 6px 10px;
-    border-radius: 10px;
-  }
-  
-  .contact-icon {
-    width: 35px;
-    height: 35px;
-    margin-bottom: 8px;
-  }
-  
-  .contact-icon i { font-size: 0.9rem; }
-  .contact-info-card h5 { font-size: 0.8rem; margin-bottom: 5px; }
-  .contact-info-card p { font-size: 0.75rem; line-height: 1.2; }
-  
-  .contact-form .form-control {
-    padding: 8px 10px;
-    font-size: 0.8rem;
-    border-radius: 8px;
-  }
-  
-  .contact-form .btn-primary {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-    border-radius: 16px;
-  }
-  
-  .container { padding: 0 10px; }
-}
+
 
 @media (max-width: 275px) {
   .stats-section,
@@ -875,6 +823,7 @@ onMounted(() => {
   .stat-item p { font-size: 0.55rem !important; }
   
   .contact-info-card {
+
     padding: 6px 4px !important;
     margin: 0 2px 4px !important;
     border-radius: 4px !important;
