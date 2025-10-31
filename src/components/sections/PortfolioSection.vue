@@ -22,7 +22,7 @@ const portfolioItems = ref([
     id: 1,
     title: "Mapeo Aéreo de Terrenos",
     category: "terrenos",
-    images: ["/assets/dron2.jpg", "/assets/lote.jpg", "/assets/barichara.jpg"],
+    images: ["/assets/dron2.jpg", "/assets/lote.jpg", "/assets/lote22.jpg"],
     description:
       "Capturamos vistas únicas de lotes y propiedades con drones DJI — ideales para ventas, publicidad y desarrollo inmobiliario.",
   },
