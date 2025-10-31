@@ -1,103 +1,91 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 // Estado reactivo para la galería
-const selectedFilter = ref('todos');
+const selectedFilter = ref("todos");
 const showModal = ref(false);
 const selectedImage = ref(null);
 const currentSlides = ref({});
 
 // Datos actualizados con múltiples imágenes por categoría
 const portfolioItems = ref([
-    {
+  {
     id: 7,
-    title: 'Emergencias y Monitoreo',
-    category: 'inspeccion',
-    images: [
-      '/assets/catastrofe.jpg',
-      '/assets/llu.jpg',
-      '/assets/cata.jpg'
-    ],
-    description: 'monitoreo con cámaras especiales pueden usarse para buscar personas o para evaluar los daños tras un desastre natural.'
+    title: "Emergencias y Monitoreo",
+    category: "inspeccion",
+    images: ["/assets/catastrofe.jpg", "/assets/llu.jpg", "/assets/cata.jpg"],
+    description:
+      "Monitoreo con cámaras especiales pueden usarse para buscar personas o para evaluar los daños tras un desastre natural.",
   },
+
   {
     id: 1,
-    title: 'Mapeo Aéreo de Terrenos',
-    category: 'terrenos',
-    images: [
-      '/assets/dron2.jpg',
-      '/assets/lote.jpg',
-      '/assets/barichara.jpg'
-    ],
-    description: 'Capturamos vistas únicas de lotes y propiedades con drones DJI — ideales para ventas, publicidad y desarrollo inmobiliario.'
+    title: "Mapeo Aéreo de Terrenos",
+    category: "terrenos",
+    images: ["/assets/dron2.jpg", "/assets/lote.jpg", "/assets/barichara.jpg"],
+    description:
+      "Capturamos vistas únicas de lotes y propiedades con drones DJI — ideales para ventas, publicidad y desarrollo inmobiliario.",
   },
   {
     id: 2,
-    title: 'Fotografía Aérea de Bodas',
-    category: 'bodas',
+    title: "Fotografía Aérea de Bodas",
+    category: "bodas",
     images: [
-      '/assets/fotobodas.jpg',
-      '/assets/fotobodas22.jpg',
-      '/assets/fotobodas33.jpg'
+      "/assets/fotobodas.jpg",
+      "/assets/fotobodas22.jpg",
+      "/assets/fotobodas33.jpg",
     ],
-    description: 'Captura única del momento especial desde perspectivas aéreas cinematográficas'
+    description:
+      "Captura única del momento especial desde perspectivas aéreas cinematográficas",
   },
   {
     id: 3,
-    title: 'Inspección y seguimiento con Drones',
-    category: 'inspeccion',
+    title: "Inspección y seguimiento con Drones",
+    category: "inspeccion",
     images: [
-      '/assets/inspeccion.jpg',
-      '/assets/cabañas.jpg',
-      '/assets/dron2.jpg'
+      "/assets/inspeccion.jpg",
+      "/assets/cabañas.jpg",
+      "/assets/aereo11.jpg",
     ],
-    description: 'Inspección técnica aérea de infraestructura industrial y zonas rurales mediante drones equipados con sensores y cámaras de alta resolución. Ideal para detectar fallas estructurales, puntos de calor, o fugas energéticas. Además, permite realizar búsquedas eficientes de personas o animales en terrenos amplios o de difícil acceso, precisa y en tiempo real.'
+    description:
+      "Inspección técnica de zonas rurales o urbanas mediante drones equipados con sensores y cámaras 4k. Ideal para detectar fallas estructurales, puntos de calor o fugas. Permite realizar búsquedas eficientes de personas o animales en terrenos amplios o de difícil acceso, precisa y en tiempo real.",
   },
   {
     id: 4,
-    title: 'Eventos Corporativos Aéreos',
-    category: 'eventos',
-    images: [
-      '/assets/corpo.jpg',
-      '/assets/aereo.jpg',
-      '/assets/fotobodas.jpg'
-    ],
-    description: 'Cobertura aérea profesional completa de eventos empresariales'
+    title: "Eventos Corporativos Aéreos",
+    category: "eventos",
+    images: ["/assets/corpo.jpg", "/assets/aereo.jpg", "/assets/fotobodas.jpg"],
+    description:
+      "Cobertura aérea profesional completa de eventos empresariales",
   },
   {
     id: 5,
-    title: 'Agricultura de Precisión',
-    category: 'terrenos',
-    images: [
-      '/assets/lote.jpg',
-      '/assets/casa.jpg',
-      '/assets/campo.jpg'
-    ],
-    description: 'Análisis topográfico y monitoreo de cultivos con drones especializados'
+    title: "Agricultura de Precisión",
+    category: "terrenos",
+    images: ["/assets/lote.jpg", "/assets/casa.jpg", "/assets/campo.jpg"],
+    description:
+      "Análisis topográfico y monitoreo de cultivos con drones especializados",
   },
   {
     id: 6,
-    title: 'Celebraciones Aéreas',
-    category: 'eventos',
-    images: [
-      '/assets/aereo.jpg',
-      '/assets/corpo.jpg',
-      '/assets/fotobodas.jpg'
-    ],
-    description: 'Momentos únicos capturados desde las alturas en celebraciones especiales'
+    title: "Celebraciones Aéreas",
+    category: "eventos",
+    images: ["/assets/aereo.jpg", "/assets/corpo.jpg", "/assets/fotobodas.jpg"],
+    description:
+      "Momentos únicos capturados desde las alturas en celebraciones especiales",
   },
 
   {
     id: 8,
-    title: 'Paisajes Naturales',
-    category: 'terrenos',
+    title: "Paisajes Naturales",
+    category: "terrenos",
     images: [
-      '/assets/santander.jpg',
-      '/assets/barichara.jpg',
-      '/assets/palmas.jpg'
+      "/assets/santander.jpg",
+      "/assets/barichara.jpg",
+      "/assets/palmas.jpg",
     ],
-    description: 'Captura de paisajes naturales para turismo y documentación'
-  }
+    description: "Captura de paisajes naturales para turismo y documentación",
+  },
 ]);
 
 // Filtrado de items
@@ -105,29 +93,32 @@ const filteredItems = ref([]);
 
 const filterItems = (category) => {
   selectedFilter.value = category;
-  if (category === 'todos') {
+  if (category === "todos") {
     filteredItems.value = portfolioItems.value;
   } else {
-    filteredItems.value = portfolioItems.value.filter(item => item.category === category);
+    filteredItems.value = portfolioItems.value.filter(
+      (item) => item.category === category
+    );
   }
 };
 
 // Funciones del carousel
 const nextSlide = (itemId) => {
-  const item = portfolioItems.value.find(p => p.id === itemId);
+  const item = portfolioItems.value.find((p) => p.id === itemId);
   if (!item) return;
-  
+
   const currentIndex = currentSlides.value[itemId] || 0;
   const nextIndex = (currentIndex + 1) % item.images.length;
   currentSlides.value[itemId] = nextIndex;
 };
 
 const prevSlide = (itemId) => {
-  const item = portfolioItems.value.find(p => p.id === itemId);
+  const item = portfolioItems.value.find((p) => p.id === itemId);
   if (!item) return;
-  
+
   const currentIndex = currentSlides.value[itemId] || 0;
-  const prevIndex = currentIndex === 0 ? item.images.length - 1 : currentIndex - 1;
+  const prevIndex =
+    currentIndex === 0 ? item.images.length - 1 : currentIndex - 1;
   currentSlides.value[itemId] = prevIndex;
 };
 
@@ -146,9 +137,9 @@ const closeModal = () => {
 };
 
 onMounted(() => {
-  filterItems('todos');
+  filterItems("todos");
   // Inicializar slides en 0 para todos los items
-  portfolioItems.value.forEach(item => {
+  portfolioItems.value.forEach((item) => {
     currentSlides.value[item.id] = 0;
   });
 });
@@ -158,35 +149,35 @@ onMounted(() => {
   <section id="portfolio" class="portfolio-section">
     <div class="container">
       <h2 class="section-title">Nuestro Portafolio</h2>
-      
+
       <!-- Filtros -->
       <div class="filter-buttons">
-        <button 
-          :class="{ active: selectedFilter === 'todos' }" 
+        <button
+          :class="{ active: selectedFilter === 'todos' }"
           @click="filterItems('todos')"
         >
           Todos
         </button>
-        <button 
-          :class="{ active: selectedFilter === 'bodas' }" 
+        <button
+          :class="{ active: selectedFilter === 'bodas' }"
           @click="filterItems('bodas')"
         >
           Bodas
         </button>
-        <button 
-          :class="{ active: selectedFilter === 'terrenos' }" 
+        <button
+          :class="{ active: selectedFilter === 'terrenos' }"
           @click="filterItems('terrenos')"
         >
           Terrenos
         </button>
-        <button 
-          :class="{ active: selectedFilter === 'eventos' }" 
+        <button
+          :class="{ active: selectedFilter === 'eventos' }"
           @click="filterItems('eventos')"
         >
           Eventos
         </button>
-        <button 
-          :class="{ active: selectedFilter === 'inspeccion' }" 
+        <button
+          :class="{ active: selectedFilter === 'inspeccion' }"
           @click="filterItems('inspeccion')"
         >
           Inspección
@@ -195,43 +186,46 @@ onMounted(() => {
 
       <!-- Grid de imágenes con carousel -->
       <div class="portfolio-grid">
-        <div 
-          v-for="item in filteredItems" 
-          :key="item.id" 
+        <div
+          v-for="item in filteredItems"
+          :key="item.id"
           class="portfolio-item"
         >
           <!-- Carousel Container -->
           <div class="carousel-container">
             <div class="carousel-wrapper">
-              <div 
+              <div
                 class="carousel-slide"
                 v-for="(image, index) in item.images"
                 :key="index"
                 :class="{ active: (currentSlides[item.id] || 0) === index }"
                 @click="openModal(item)"
               >
-                <img :src="image" :alt="`${item.title} - Imagen ${index + 1}`" />
+                <img
+                  :src="image"
+                  :alt="`${item.title} - Imagen ${index + 1}`"
+                />
               </div>
             </div>
-            
+
             <!-- Controles del carousel -->
             <div class="carousel-controls">
-              <button 
-                class="carousel-btn prev" 
+              <button
+                class="carousel-btn prev"
                 @click.stop="prevSlide(item.id)"
                 v-if="item.images.length > 1"
               >
                 <i class="fas fa-chevron-left"></i>
               </button>
-              <button 
-                class="carousel-btn next" 
+              <button
+                class="carousel-btn next"
                 @click.stop="nextSlide(item.id)"
                 v-if="item.images.length > 1"
               >
                 <i class="fas fa-chevron-right"></i>
               </button>
             </div>
-            
+
             <!-- Indicadores -->
             <div class="carousel-indicators" v-if="item.images.length > 1">
               <button
@@ -242,7 +236,7 @@ onMounted(() => {
               ></button>
             </div>
           </div>
-          
+
           <div class="portfolio-overlay">
             <h4>{{ item.title }}</h4>
             <p>{{ item.description }}</p>
@@ -258,40 +252,52 @@ onMounted(() => {
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <button class="modal-close" @click="closeModal">&times;</button>
-        
+
         <div class="modal-carousel">
           <div class="modal-carousel-wrapper">
-            <div 
+            <div
               class="modal-carousel-slide"
               v-for="(image, index) in selectedImage?.images"
               :key="index"
-              :class="{ active: (currentSlides[selectedImage?.id] || 0) === index }"
+              :class="{
+                active: (currentSlides[selectedImage?.id] || 0) === index,
+              }"
             >
-              <img :src="image" :alt="`${selectedImage?.title} - Imagen ${index + 1}`" />
+              <img
+                :src="image"
+                :alt="`${selectedImage?.title} - Imagen ${index + 1}`"
+              />
             </div>
           </div>
-          
-          <div class="modal-carousel-controls" v-if="selectedImage?.images.length > 1">
-            <button 
-              class="modal-carousel-btn prev" 
+
+          <div
+            class="modal-carousel-controls"
+            v-if="selectedImage?.images.length > 1"
+          >
+            <button
+              class="modal-carousel-btn prev"
               @click="prevSlide(selectedImage.id)"
             >
               <i class="fas fa-chevron-left"></i>
             </button>
-            <button 
-              class="modal-carousel-btn next" 
+            <button
+              class="modal-carousel-btn next"
               @click="nextSlide(selectedImage.id)"
             >
               <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
-        
+
         <div class="modal-info">
           <h3>{{ selectedImage?.title }}</h3>
           <p>{{ selectedImage?.description }}</p>
-          <div class="modal-image-counter" v-if="selectedImage?.images.length > 1">
-            Imagen {{ (currentSlides[selectedImage?.id] || 0) + 1 }} de {{ selectedImage?.images.length }}
+          <div
+            class="modal-image-counter"
+            v-if="selectedImage?.images.length > 1"
+          >
+            Imagen {{ (currentSlides[selectedImage?.id] || 0) + 1 }} de
+            {{ selectedImage?.images.length }}
           </div>
         </div>
       </div>
@@ -300,7 +306,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap");
 
 .container {
   max-width: 1200px;
@@ -311,19 +317,23 @@ onMounted(() => {
 /* Sección de Portafolio */
 .portfolio-section {
   padding: 120px 0;
-  background: #0A0A0A;
+  background: #0a0a0a;
   position: relative;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .portfolio-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse at center, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 191, 255, 0.1) 0%,
+    transparent 70%
+  );
   z-index: 0;
 }
 
@@ -333,24 +343,24 @@ onMounted(() => {
 }
 
 .section-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: clamp(2.5rem, 5vw, 4rem);
   text-align: center;
   margin-bottom: 80px;
-  color: #00BFFF;
+  color: #00bfff;
   position: relative;
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #00BFFF, #FFD700);
+  background: linear-gradient(90deg, #00bfff, #ffd700);
   border-radius: 2px;
 }
 
@@ -365,13 +375,13 @@ onMounted(() => {
 
 .filter-buttons button {
   background: transparent;
-  color: #FFFFFF;
-  border: 2px solid #00BFFF;
+  color: #ffffff;
+  border: 2px solid #00bfff;
   padding: 15px 30px;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   position: relative;
@@ -379,13 +389,13 @@ onMounted(() => {
 }
 
 .filter-buttons button::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #00BFFF, #FFD700);
+  background: linear-gradient(90deg, #00bfff, #ffd700);
   transition: left 0.3s ease;
   z-index: -1;
 }
@@ -397,7 +407,7 @@ onMounted(() => {
 
 .filter-buttons button:hover,
 .filter-buttons button.active {
-  color: #0A0A0A;
+  color: #0a0a0a;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 191, 255, 0.4);
 }
@@ -536,12 +546,12 @@ onMounted(() => {
 }
 
 .carousel-indicators button.active {
-  background: #00BFFF;
+  background: #00bfff;
   transform: scale(1.2);
 }
 
 .carousel-indicators button:hover {
-  background: #FFD700;
+  background: #ffd700;
 }
 
 .portfolio-overlay {
@@ -550,7 +560,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 40px 25px 25px;
   transform: translateY(100%);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -562,10 +572,10 @@ onMounted(() => {
 }
 
 .portfolio-overlay h4 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #FFD700;
+  color: #ffd700;
   font-size: 1.3rem;
 }
 
@@ -578,7 +588,7 @@ onMounted(() => {
 
 .image-counter {
   font-size: 0.8rem;
-  color: #00BFFF;
+  color: #00bfff;
   font-weight: 600;
   text-align: right;
 }
@@ -657,19 +667,19 @@ onMounted(() => {
 
 .modal-info {
   padding: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .modal-info h3 {
-  font-family: 'Montserrat', sans-serif;
-  color: #FFD700;
+  font-family: "Montserrat", sans-serif;
+  color: #ffd700;
   margin-bottom: 10px;
 }
 
 .modal-image-counter {
   margin-top: 15px;
   font-size: 0.9rem;
-  color: #00BFFF;
+  color: #00bfff;
   font-weight: 600;
   text-align: center;
 }
@@ -679,16 +689,16 @@ onMounted(() => {
   .portfolio-section {
     padding: 80px 0;
   }
-  
+
   .filter-buttons {
     gap: 15px;
   }
-  
+
   .filter-buttons button {
     padding: 12px 25px;
     font-size: 0.9rem;
   }
-  
+
   .portfolio-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
@@ -700,41 +710,41 @@ onMounted(() => {
     font-size: clamp(2rem, 6vw, 2.5rem);
     margin-bottom: 50px;
   }
-  
+
   .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  
+
   .filter-buttons {
     gap: 10px;
     padding: 0 10px;
   }
-  
+
   .filter-buttons button {
     padding: 10px 20px;
     font-size: 0.85rem;
   }
-  
+
   .carousel-btn {
     width: 35px;
     height: 35px;
   }
-  
+
   .carousel-btn i {
     font-size: 12px;
   }
-  
+
   .carousel-indicators button {
     width: 8px;
     height: 8px;
   }
-  
+
   .modal-carousel-btn {
     width: 45px;
     height: 45px;
   }
-  
+
   .modal-carousel-btn i {
     font-size: 16px;
   }
@@ -744,44 +754,44 @@ onMounted(() => {
   .portfolio-section {
     padding: 60px 0;
   }
-  
+
   .portfolio-grid {
     gap: 20px;
   }
-  
+
   .portfolio-item {
     border-radius: 15px;
   }
-  
+
   .filter-buttons {
     flex-direction: column;
     align-items: center;
     gap: 8px;
   }
-  
+
   .filter-buttons button {
     width: 200px;
     padding: 8px 15px;
   }
-  
+
   .carousel-controls {
     padding: 0 10px;
   }
-  
+
   .carousel-btn {
     width: 30px;
     height: 30px;
   }
-  
+
   .carousel-btn i {
     font-size: 10px;
   }
-  
+
   .carousel-indicators {
     bottom: 10px;
     gap: 6px;
   }
-  
+
   .carousel-indicators button {
     width: 6px;
     height: 6px;
