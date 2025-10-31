@@ -7,6 +7,7 @@ const showModal = ref(false);
 const selectedImage = ref(null);
 const currentSlides = ref({});
 
+
 // Datos actualizados con múltiples imágenes por categoría
 const portfolioItems = ref([
   {
@@ -26,6 +27,7 @@ const portfolioItems = ref([
     description:
       "Capturamos vistas únicas de lotes y propiedades con drones DJI — ideales para ventas, publicidad y desarrollo inmobiliario.",
   },
+
   {
     id: 2,
     title: "Fotografía Aérea de Bodas",
@@ -35,9 +37,11 @@ const portfolioItems = ref([
       "/assets/fotobodas22.jpg",
       "/assets/fotobodas33.jpg",
     ],
+
     description:
       "Captura única del momento especial desde perspectivas aéreas cinematográficas",
   },
+
   {
     id: 3,
     title: "Inspección y seguimiento con Drones",
@@ -50,6 +54,7 @@ const portfolioItems = ref([
     description:
       "Inspección técnica de zonas rurales o urbanas mediante drones equipados con sensores y cámaras 4k. Ideal para detectar fallas estructurales, puntos de calor o fugas. Permite realizar búsquedas eficientes de personas o animales en terrenos amplios o de difícil acceso, precisa y en tiempo real.",
   },
+  
   {
     id: 4,
     title: "Eventos Corporativos Aéreos",

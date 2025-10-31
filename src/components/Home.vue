@@ -6,7 +6,6 @@
     <!-- Services Section Component -->
     <ServicesSection />
 
-
     <!-- Portfolio Section Component -->
     <PortfolioSection />
     
@@ -134,6 +133,11 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer Simple -->
+    <footer class="barraas">
+      <h3>Todos los derechos reservados - 2025</h3>
+    </footer>
 
   </div>
 </template>
@@ -664,6 +668,68 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* Footer Simple - Barra Negra */
+.barraas {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  border-top: 1px solid #333333;
+}
+
+.barraas h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Responsividad del Footer */
+@media (max-width: 768px) {
+  .barraas {
+    padding: 15px 0;
+  }
+  
+  .barraas h3 {
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .barraas {
+    padding: 12px 0;
+  }
+  
+  .barraas h3 {
+    font-size: clamp(0.65rem, 3vw, 0.8rem);
+  }
+}
+
+@media (max-width: 400px) {
+  .barraas {
+    padding: 10px 0;
+  }
+  
+  .barraas h3 {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 275px) {
+  .barraas {
+    padding: 8px 0;
+  }
+  
+  .barraas h3 {
+    font-size: 0.55rem;
+  }
+}
+
 /* Responsividad consolidada */
 @media (max-width: 1200px) {
   .stats-section,
@@ -792,7 +858,7 @@ onMounted(() => {
   
   .contact-icon i { font-size: 1rem; }
   .contact-info-card h5 { font-size: 0.9rem; margin-bottom: 6px; }
-  .contact-info-card p { font-size: 0.8rem; line-height: 1.3; }
+  .contact-info_card p { font-size: 0.8rem; line-height: 1.3; }
   
   .contact-form .form-control {
     padding: 10px 12px;
